@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3a3d42"/>
+      <stop offset="100%" stop-color="#222428"/>
+    </linearGradient>
+    <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#33363b"/>
+      <stop offset="100%" stop-color="#181a1d"/>
+    </linearGradient>
+    <linearGradient id="gimbalRim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e2e5ea"/>
+      <stop offset="50%" stop-color="#8b9099"/>
+      <stop offset="100%" stop-color="#d2d5dc"/>
+    </linearGradient>
+  </defs>
+  <!-- Mat background -->
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <g opacity="0.12" stroke="#ffffff" stroke-width="1">
+    <path d="M0 100 H800 M0 200 H800 M0 300 H800 M0 400 H800 M0 500 H800"/>
+    <path d="M100 0 V600 M200 0 V600 M300 0 V600 M400 0 V600 M500 0 V600 M600 0 V600 M700 0 V600"/>
+  </g>
+  <!-- Top carry handle & antenna -->
+  <path d="M300 72 C300 42, 500 42, 500 72" fill="none" stroke="#c8cdd4" stroke-width="10" stroke-linecap="round"/>
+  <rect x="382" y="18" width="36" height="58" rx="6" fill="#1b1d20"/>
+  <rect x="394" y="4" width="140" height="16" rx="8" fill="#111315"/>
+  <!-- Main transmitter body -->
+  <rect x="150" y="72" width="500" height="390" rx="44" fill="url(#bodyGrad)" stroke="#4c5058" stroke-width="3"/>
+  <!-- Upper silver/dark faceplate -->
+  <path d="M220 90 H580 L615 160 V225 H185 V160 Z" fill="#23262b" stroke="#545861" stroke-width="2"/>
+  <text x="400" y="128" text-anchor="middle" fill="#e9ecef" font-family="sans-serif" font-size="28" font-weight="800" letter-spacing="1">mz-24</text>
+  <rect x="342" y="198" width="116" height="22" rx="4" fill="#111315"/>
+  <text x="400" y="214" text-anchor="middle" fill="#e63946" font-family="sans-serif" font-size="13" font-weight="700">Graupner SJ</text>
+  <!-- Top toggle switches & knobs -->
+  <g fill="#aeb4bd" stroke="#1b1d20" stroke-width="2">
+    <circle cx="210" cy="115" r="18" fill="#2c2f36"/>
+    <circle cx="590" cy="115" r="18" fill="#2c2f36"/>
+    <circle cx="345" cy="164" r="18" fill="#2c2f36"/>
+    <circle cx="455" cy="164" r="18" fill="#2c2f36"/>
+    <line x1="175" y1="150" x2="152" y2="112" stroke="#d5d9df" stroke-width="6" stroke-linecap="round"/>
+    <line x1="252" y1="152" x2="262" y2="122" stroke="#d5d9df" stroke-width="5" stroke-linecap="round"/>
+    <line x1="548" y1="152" x2="538" y2="122" stroke="#d5d9df" stroke-width="5" stroke-linecap="round"/>
+    <line x1="625" y1="150" x2="648" y2="112" stroke="#d5d9df" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <!-- Left & Right Gimbals -->
+  <g>
+    <circle cx="275" cy="285" r="84" fill="url(#gimbalRim)"/>
+    <circle cx="275" cy="285" r="68" fill="#15171a"/>
+    <circle cx="275" cy="285" r="56" fill="#202328" stroke="#3c4048" stroke-width="2"/>
+    <rect x="268" y="278" width="14" height="36" rx="6" fill="#ff6f0f"/>
+    <circle cx="275" cy="312" r="10" fill="#d9dfe6"/>
+
+    <circle cx="525" cy="285" r="84" fill="url(#gimbalRim)"/>
+    <circle cx="525" cy="285" r="68" fill="#15171a"/>
+    <circle cx="525" cy="285" r="56" fill="#202328" stroke="#3c4048" stroke-width="2"/>
+    <rect x="518" y="278" width="14" height="36" rx="6" fill="#ff6f0f"/>
+    <circle cx="525" cy="312" r="10" fill="#d9dfe6"/>
+  </g>
+  <!-- Center neck strap bracket -->
+  <path d="M392 310 H412 L422 355 H396 Z" fill="#cfd4dc" stroke="#6c727d" stroke-width="2"/>
+  <!-- Bottom color touchscreen -->
+  <rect x="305" y="378" width="190" height="72" rx="8" fill="#0d1b2a" stroke="#5b616b" stroke-width="3"/>
+  <rect x="313" y="386" width="174" height="56" rx="4" fill="#1a5fb4"/>
+  <rect x="322" y="394" width="76" height="14" rx="3" fill="#62a0ea"/>
+  <rect x="322" y="414" width="106" height="18" rx="3" fill="#3584e4"/>
+  <text x="456" y="424" text-anchor="middle" fill="#ffffff" font-family="monospace" font-size="14" font-weight="700">00.0</text>
+  <!-- GR-24L Receiver in front -->
+  <rect x="348" y="486" width="104" height="64" rx="6" fill="#16181c" stroke="#7c828d" stroke-width="2"/>
+  <rect x="358" y="494" width="84" height="44" rx="3" fill="#23272e"/>
+  <text x="400" y="513" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="10" font-weight="700">Graupner SJ HoTT</text>
+  <text x="400" y="530" text-anchor="middle" fill="#8bb9fe" font-family="sans-serif" font-size="12" font-weight="700">GR-24L 2.4GHz</text>
+  <!-- USB cable & adapter on right -->
+  <path d="M585 450 C660 440, 720 480, 675 535 C630 580, 540 530, 505 545" fill="none" stroke="#c8d0d8" stroke-width="8" stroke-linecap="round" opacity="0.85"/>
+  <rect x="468" y="512" width="38" height="24" rx="3" fill="#4aa564" transform="rotate(-18 487 524)"/>
+</svg>

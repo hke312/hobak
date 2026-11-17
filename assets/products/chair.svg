@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <rect width="600" height="600" fill="#f5efe6"/>
+  <!-- Wooden Chair -->
+  <rect x="210" y="135" width="180" height="145" rx="16" fill="#c68b59" stroke="#8c5a32" stroke-width="4"/>
+  <rect x="185" y="305" width="230" height="32" rx="10" fill="#b07645" stroke="#8c5a32" stroke-width="4"/>
+  <line x1="210" y1="337" x2="195" y2="480" stroke="#8c5a32" stroke-width="18" stroke-linecap="round"/>
+  <line x1="390" y1="337" x2="405" y2="480" stroke="#8c5a32" stroke-width="18" stroke-linecap="round"/>
+  <line x1="230" y1="280" x2="230" y2="305" stroke="#8c5a32" stroke-width="14"/>
+  <line x1="370" y1="280" x2="370" y2="305" stroke="#8c5a32" stroke-width="14"/>
+</svg>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상품 상세 | 호박마켓</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/detail.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="js/supabase-config.js"></script>
+  <script defer src="js/store.js"></script>
+  <script defer src="js/validation.js"></script>
+  <script defer src="js/auth.js"></script>
+  <script defer src="js/detail.js"></script>
+</head>
+<body class="detail-page-bg">
+  <main id="detail-main" class="detail-shell">
+    <div class="detail-hero">
+      <div class="hero-overlay-bar">
+        <a href="index.html" class="hero-close-btn" aria-label="목록으로 돌아가기">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 6 6 18M6 6l12 12"/>
+          </svg>
+        </a>
+        <div class="hero-overlay-actions">
+          <a href="write.html" id="header-write-btn" class="btn btn-secondary btn-pill hero-write-btn" data-requires-auth="write">글쓰기</a>
+          <button type="button" id="auth-login-btn" class="btn btn-outline btn-pill hero-auth-btn">로그인</button>
+          <button type="button" id="auth-nickname-btn" class="btn btn-secondary btn-pill hero-auth-btn auth-nickname-btn" hidden>닉네임</button>
+          <button type="button" id="auth-logout-btn" class="btn btn-outline btn-pill hero-auth-btn" hidden>로그아웃</button>
+          <button type="button" id="app-view-btn" class="hero-app-btn">앱에서 보기</button>
+        </div>
+      </div>
+
+      <section class="carousel" aria-roledescription="carousel" aria-label="상품 사진">
+        <div class="carousel-controls">
+          <button type="button" class="carousel-btn" data-direction="previous" aria-label="이전 사진">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m15 18-6-6 6-6"/>
+            </svg>
+          </button>
+          <button type="button" class="carousel-btn" data-direction="next" aria-label="다음 사진">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m9 18 6-6-6-6"/>
+            </svg>
+          </button>
+        </div>
+
+        <div id="carousel-track" class="carousel-track" tabindex="0" role="group" aria-label="상품 이미지 목록"></div>
+        <div id="hero-status-badge" class="carousel-status-badge"></div>
+        <p id="carousel-status" class="visually-hidden" role="status" aria-live="polite"></p>
+        <nav id="carousel-markers" class="carousel-markers" aria-label="사진 선택"></nav>
+      </section>
+    </div>
+
+    <div class="seller-bar">
+      <div class="seller-profile">
+        <div class="seller-avatar" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/>
+          </svg>
+        </div>
+        <div class="seller-info">
+          <div id="seller-name" class="seller-name"></div>
+          <div id="seller-location" class="seller-location"></div>
+        </div>
+      </div>
+
+      <div class="seller-temp-box">
+        <div id="seller-temp" class="seller-temp-row tabular-nums">37.2°C 😊</div>
+        <button type="button" id="manner-temp-btn" class="seller-temp-label">매너온도</button>
+      </div>
+    </div>
+
+    <article class="detail-article">
+      <div class="detail-title-row">
+        <h1 id="detail-title" class="detail-title"></h1>
+        <span id="detail-condition-badge" class="status-badge status-badge--reserved" hidden></span>
+      </div>
+
+      <p class="detail-meta">
+        <a id="detail-category" class="detail-category-link" href="index.html"></a>
+        <span aria-hidden="true">·</span>
+        <span id="detail-time"></span>
+      </p>
+
+      <p id="detail-price" class="detail-price tabular-nums"></p>
+      <p id="detail-description" class="detail-description"></p>
+      <p id="detail-stats" class="detail-stats tabular-nums"></p>
+
+      <div class="detail-owner-tools" hidden>
+        <div class="owner-status-group" role="group" aria-label="거래 상태 선택">
+          <button type="button" class="btn btn-outline owner-status-btn" data-status="available" aria-pressed="false">판매중</button>
+          <button type="button" class="btn btn-outline owner-status-btn" data-status="reserved" aria-pressed="false">예약중</button>
+          <button type="button" class="btn btn-outline owner-status-btn" data-status="sold" aria-pressed="false">거래완료</button>
+        </div>
+        <div class="owner-action-group">
+          <a id="edit-post-link" class="btn btn-outline" href="write.html">수정</a>
+          <button type="button" id="delete-post-btn" class="btn btn-outline">삭제</button>
+        </div>
+      </div>
+    </article>
+
+    <div class="detail-bottom-bar">
+      <button type="button" id="wish-btn" class="wish-btn" aria-pressed="false" aria-label="관심 목록에 추가">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 20.5s-7.5-4.6-9.5-9.2C1 7.8 3.2 4.5 6.8 4.5c2 0 3.7 1.1 5.2 2.8 1.5-1.7 3.2-2.8 5.2-2.8 3.6 0 5.8 3.3 4.3 6.8-2 4.6-9.5 9.2-9.5 9.2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="bottom-price-box">
+        <span id="bottom-price" class="bottom-price tabular-nums"></span>
+        <span id="bottom-negotiable" class="bottom-negotiable"></span>
+      </div>
+
+      <button type="button" id="chat-btn" class="btn btn-primary">채팅하기</button>
+    </div>
+  </main>
+
+  <section class="related-section" aria-labelledby="related-heading">
+    <div class="related-header">
+      <h2 id="related-heading" class="related-heading">이 글과 함께 봤어요</h2>
+      <a href="index.html" class="related-more-link">전체 보기</a>
+    </div>
+    <div id="related-grid" class="related-grid"></div>
+  </section>
+
+  <!-- 앱에서 보기 모달 -->
+  <dialog id="app-dialog" class="hobak-dialog" closedby="any" aria-labelledby="app-dialog-title">
+    <div class="dialog-header">
+      <h2 id="app-dialog-title" class="dialog-title">호박마켓 앱에서 보기</h2>
+      <button type="button" class="dialog-close" command="close" commandfor="app-dialog" aria-label="닫기">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="dialog-body">
+      <p class="dialog-copy">모바일 호박마켓 앱에서는 실시간 채팅 알림, 동네 인증, 안전한 호박페이 거래를 바로 이용할 수 있어요.</p>
+      <p class="dialog-copy dialog-copy--muted">스토어에서 '호박마켓'을 검색해 앱을 설치하면 이 상품을 바로 이어볼 수 있어요.</p>
+    </div>
+    <div class="dialog-footer">
+      <form method="dialog">
+        <button type="submit" class="btn btn-secondary" value="cancel" autofocus>닫기</button>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- 매너온도 안내 모달 -->
+  <dialog id="temp-dialog" class="hobak-dialog" closedby="any" aria-labelledby="temp-dialog-title">
+    <div class="dialog-header">
+      <h2 id="temp-dialog-title" class="dialog-title">매너온도란?</h2>
+      <button type="button" class="dialog-close" command="close" commandfor="temp-dialog" aria-label="닫기">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="dialog-body">
+      <p class="dialog-copy">매너온도는 호박마켓 이웃들로부터 받은 칭찬, 거래 후기, 비매너 평가 등을 종합해서 만든 매너 지표예요.</p>
+      <p class="dialog-copy dialog-copy--muted">첫 거래는 36.5°C에서 시작하며, 따뜻한 거래를 나눌수록 온도가 올라갑니다.</p>
+    </div>
+    <div class="dialog-footer">
+      <form method="dialog">
+        <button type="submit" class="btn btn-secondary" value="cancel" autofocus>닫기</button>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- 채팅하기 모달 -->
+  <dialog id="chat-dialog" class="hobak-dialog" closedby="any" aria-labelledby="chat-seller-name">
+    <div class="dialog-header">
+      <h2 id="chat-seller-name" class="dialog-title">판매자님과 채팅하기</h2>
+      <button type="button" class="dialog-close" command="close" commandfor="chat-dialog" aria-label="닫기">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="dialog-body">
+      <div id="chat-history" class="chat-history" aria-live="polite" hidden></div>
+      <form id="chat-form">
+        <div class="field chat-field">
+          <label for="chat-message-input" class="chat-field-label">보낼 메시지</label>
+          <textarea
+            id="chat-message-input"
+            name="message"
+            class="chat-textarea"
+            rows="4"
+            required
+            autofocus
+            placeholder="안녕하세요! 상품 거래 가능할까요?"
+            data-error="chat-message-error"
+          ></textarea>
+          <div id="chat-message-error" class="error-msg">보낼 메시지를 입력해 주세요.</div>
+        </div>
+      </form>
+    </div>
+    <div class="dialog-footer">
+      <form method="dialog">
+        <button type="submit" class="btn btn-secondary" value="cancel">취소</button>
+      </form>
+      <button type="submit" form="chat-form" class="btn btn-primary">보내기</button>
+    </div>
+  </dialog>
+
+  <!-- 삭제 확인 모달 -->
+  <dialog id="delete-dialog" class="hobak-dialog" closedby="any" aria-labelledby="delete-dialog-title">
+    <div class="dialog-header">
+      <h2 id="delete-dialog-title" class="dialog-title">게시글 삭제</h2>
+      <button type="button" class="dialog-close" command="close" commandfor="delete-dialog" aria-label="닫기">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="dialog-body">
+      <p class="dialog-copy">이 게시글을 정말 삭제할까요?</p>
+      <p class="dialog-copy dialog-copy--muted">삭제된 글과 사진은 다시 복구할 수 없어요.</p>
+    </div>
+    <div class="dialog-footer">
+      <form method="dialog">
+        <button type="submit" class="btn btn-secondary" value="cancel" autofocus>취소</button>
+      </form>
+      <button type="button" id="confirm-delete-btn" class="btn btn-danger">삭제</button>
+    </div>
+  </dialog>
+
+  <div id="toast-banner" class="toast-banner" role="status" aria-live="polite" hidden></div>
+
+  <script>
+    if (!('commandForElement' in HTMLButtonElement.prototype)) {
+      document.querySelectorAll('.dialog-close[command="close"]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          btn.closest('dialog')?.close('cancel');
+        });
+      });
+    }
+  </script>
+</body>
+</html>

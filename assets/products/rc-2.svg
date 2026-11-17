@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#26292e"/>
+  <rect x="60" y="60" width="680" height="480" rx="28" fill="#1c1e22" stroke="#3c4048" stroke-width="2"/>
+  <!-- GR-24L Receiver Close-up -->
+  <rect x="130" y="150" width="290" height="190" rx="14" fill="#121316" stroke="#6d737e" stroke-width="3"/>
+  <rect x="150" y="170" width="250" height="145" rx="8" fill="#1f2329" stroke="#3b414b"/>
+  <text x="275" y="210" text-anchor="middle" fill="#e9ecef" font-family="sans-serif" font-size="22" font-weight="700">Graupner SJ</text>
+  <text x="275" y="250" text-anchor="middle" fill="#ff6f0f" font-family="sans-serif" font-size="28" font-weight="800">GR-24L HoTT</text>
+  <text x="275" y="285" text-anchor="middle" fill="#9aa1ac" font-family="monospace" font-size="16">12CH 2.4GHz RECEIVER</text>
+  <!-- Antennas -->
+  <path d="M130 200 C85 200, 80 280, 115 350" fill="none" stroke="#111" stroke-width="6"/>
+  <path d="M130 240 C75 260, 85 370, 145 410" fill="none" stroke="#111" stroke-width="6"/>
+  <!-- Battery pack -->
+  <rect x="465" y="150" width="190" height="115" rx="12" fill="#2c5cc5" stroke="#5b86e5" stroke-width="3"/>
+  <text x="560" y="200" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-size="20" font-weight="700">LiPo 1S</text>
+  <text x="560" y="230" text-anchor="middle" fill="#dbe7ff" font-family="monospace" font-size="16">4000mAh 3.7V</text>
+  <!-- USB & Firmware Cable -->
+  <path d="M475 330 C520 330, 520 430, 580 430 C640 430, 650 370, 610 350" fill="none" stroke="#d0d5dd" stroke-width="10" stroke-linecap="round"/>
+  <rect x="445" y="314" width="44" height="32" rx="4" fill="#d9a441"/>
+  <rect x="570" y="405" width="60" height="36" rx="5" fill="#2f855a"/>
+  <text x="400" y="490" text-anchor="middle" fill="#adb5bd" font-family="sans-serif" font-size="20">GR-24L 수신기 · 정품 배터리 · USB 업데이트 케이블 구성</text>
+</svg>

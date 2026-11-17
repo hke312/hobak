@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <rect width="600" height="600" fill="#f7f4ef"/>
+  <!-- Book Stack -->
+  <rect x="145" y="340" width="310" height="75" rx="8" fill="#3d5a80" stroke="#293241" stroke-width="4"/>
+  <rect x="165" y="265" width="280" height="75" rx="8" fill="#ee6c4d" stroke="#293241" stroke-width="4"/>
+  <rect x="180" y="195" width="250" height="70" rx="8" fill="#98c1d9" stroke="#293241" stroke-width="4"/>
+  <line x1="195" y1="228" x2="365" y2="228" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
+  <line x1="195" y1="302" x2="385" y2="302" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
+</svg>

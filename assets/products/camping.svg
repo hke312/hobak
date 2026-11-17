@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <rect width="600" height="600" fill="#e9f5ee"/>
+  <!-- Camping Tent & Lantern -->
+  <polygon points="300,150 490,435 110,435" fill="#2d6a4f" stroke="#1b4332" stroke-width="5"/>
+  <polygon points="300,150 375,435 225,435" fill="#40916c"/>
+  <polygon points="300,260 350,435 250,435" fill="#1b4332"/>
+  <circle cx="150" cy="195" r="28" fill="#ffb703"/>
+</svg>

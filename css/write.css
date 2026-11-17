@@ -1,0 +1,549 @@
+/* Write Page (Material Elevation 3 Sheet over Canvas) */
+.write-page-bg {
+  background-color: var(--color-canvas);
+  min-block-size: 100dvh;
+}
+
+.write-shell {
+  max-inline-size: var(--container-detail);
+  margin-inline: auto;
+  background-color: var(--color-bg);
+  min-block-size: 100dvh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--elevation-3);
+}
+
+@media (min-width: 680px) {
+  .write-page-bg {
+    padding-block: var(--space-3) var(--space-6);
+  }
+
+  .write-shell {
+    min-block-size: auto;
+    border-radius: var(--radius-lg);
+    overflow: clip;
+  }
+}
+
+/* Material Top App Bar (Elevation 2) */
+.write-topbar {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-1);
+  padding: var(--space-2);
+  background-color: var(--color-bg);
+  border-block-end: 1px solid var(--color-border);
+  box-shadow: var(--elevation-1);
+}
+
+.write-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: var(--space-6);
+  min-block-size: var(--space-6);
+  border-radius: var(--radius-pill);
+  color: var(--color-text);
+  transition: background-color 150ms var(--md-motion-standard), scale 120ms var(--md-motion-standard);
+}
+
+.write-close-btn:hover {
+  background-color: var(--color-surface-muted);
+}
+
+.write-close-btn:active {
+  scale: 0.94;
+}
+
+.write-topbar-title {
+  margin: 0;
+  font-size: var(--type-title-lg-size);
+  line-height: var(--type-title-lg-line);
+  font-weight: 700;
+}
+
+.write-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.write-draft-btn {
+  min-block-size: 40px;
+  padding-inline: var(--space-2);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-bg);
+  color: var(--color-text-secondary);
+  font-size: var(--type-label-lg-size);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 150ms var(--md-motion-standard),
+    box-shadow 150ms var(--md-motion-standard),
+    scale 120ms var(--md-motion-standard);
+}
+
+.write-draft-btn:hover {
+  background-color: var(--color-surface);
+  box-shadow: var(--elevation-1);
+}
+
+.write-draft-btn:active {
+  scale: 0.96;
+}
+
+.write-preview-pill {
+  min-block-size: 40px;
+  padding-inline: var(--space-2);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-brand);
+  color: #ffffff;
+  font-size: var(--type-label-lg-size);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--elevation-1);
+  transition:
+    background-color 150ms var(--md-motion-standard),
+    box-shadow 150ms var(--md-motion-standard),
+    scale 120ms var(--md-motion-standard);
+}
+
+.write-preview-pill:hover {
+  background-color: var(--color-brand-hover);
+  box-shadow: var(--elevation-2);
+}
+
+.write-preview-pill:active {
+  scale: 0.96;
+}
+
+/* Seller Preview Bar (Surface Container) */
+.write-seller-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--color-surface);
+  border-block-end: 1px solid var(--color-border);
+}
+
+.write-seller-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.write-seller-avatar {
+  inline-size: var(--space-5);
+  block-size: var(--space-5);
+  border-radius: var(--radius-pill);
+  background-color: #d0d5dd;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  box-shadow: var(--elevation-1);
+}
+
+.write-seller-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.write-seller-name {
+  font-size: var(--type-title-sm-size);
+  line-height: var(--type-title-sm-line);
+  font-weight: 700;
+}
+
+.write-seller-region {
+  font-size: var(--type-body-sm-size);
+  line-height: var(--type-body-sm-line);
+  color: var(--color-text-muted);
+}
+
+.write-seller-temp {
+  font-size: var(--type-title-sm-size);
+  line-height: var(--type-title-sm-line);
+  font-weight: 800;
+  color: var(--color-brand);
+}
+
+/* Form Body (8px Grid: 24px padding & 24px gap) */
+.write-form {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3);
+  gap: var(--space-3);
+}
+
+/* Photo Upload Section */
+.photo-uploader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding-block-end: var(--space-3);
+  border-block-end: 1px solid var(--color-border);
+}
+
+.photo-uploader-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-1);
+}
+
+.photo-uploader-label {
+  font-size: var(--type-title-sm-size);
+  line-height: var(--type-title-sm-line);
+  font-weight: 700;
+}
+
+.sample-photo-btn {
+  min-block-size: 32px;
+  padding-inline: var(--space-2);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-bg);
+  font-size: var(--type-label-md-size);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  box-shadow: var(--elevation-1);
+  transition: background-color 150ms var(--md-motion-standard), box-shadow 150ms var(--md-motion-standard);
+}
+
+.sample-photo-btn:hover {
+  background-color: var(--color-surface);
+  box-shadow: var(--elevation-2);
+}
+
+.photo-strip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  overflow-x: auto;
+  padding-block: var(--space-1);
+}
+
+.photo-preview-list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.photo-add-box {
+  position: relative;
+  flex: 0 0 88px;
+  inline-size: 88px;
+  block-size: 88px;
+  border: 1.5px dashed var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-05);
+  color: var(--color-text-muted);
+  font-size: var(--type-label-md-size);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--elevation-1);
+  transition:
+    border-color 150ms var(--md-motion-standard),
+    color 150ms var(--md-motion-standard),
+    box-shadow 150ms var(--md-motion-standard);
+}
+
+.photo-add-box:hover {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+  box-shadow: var(--elevation-2);
+}
+
+.photo-thumb-item {
+  position: relative;
+  flex: 0 0 88px;
+  inline-size: 88px;
+  block-size: 88px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  overflow: clip;
+  background-color: var(--color-surface-muted);
+  box-shadow: var(--elevation-1);
+}
+
+.photo-thumb-item img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.photo-cover-badge {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline: 0;
+  background-color: rgb(31 31 31 / 0.84);
+  color: #ffffff;
+  font-size: var(--type-label-md-size);
+  font-weight: 700;
+  text-align: center;
+  padding-block: 2px;
+}
+
+.photo-remove-btn {
+  position: absolute;
+  inset-block-start: var(--space-05);
+  inset-inline-end: var(--space-05);
+  inline-size: 24px;
+  block-size: 24px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background-color: rgb(0 0 0 / 0.72);
+  color: #ffffff;
+  font-size: var(--type-label-md-size);
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+/* Material Outlined Text Field Blocks */
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-1);
+}
+
+.field-label {
+  font-size: var(--type-title-sm-size);
+  line-height: var(--type-title-sm-line);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.field-hint {
+  font-size: var(--type-body-sm-size);
+  line-height: var(--type-body-sm-line);
+  color: var(--color-text-muted);
+}
+
+.field-input,
+.field-select,
+.field-textarea {
+  inline-size: 100%;
+  min-block-size: var(--space-6);
+  padding-inline: var(--space-2);
+  padding-block: var(--space-1);
+  border: 1px solid var(--color-input-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg);
+  font-size: var(--type-body-lg-size);
+  line-height: var(--type-body-lg-line);
+  transition: border-color 150ms var(--md-motion-standard), box-shadow 150ms var(--md-motion-standard);
+}
+
+.field-input:hover,
+.field-select:hover,
+.field-textarea:hover {
+  border-color: var(--color-text);
+}
+
+.field-input:focus,
+.field-select:focus,
+.field-textarea:focus {
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 1px var(--color-brand);
+  outline: none;
+}
+
+.field-textarea {
+  min-block-size: 160px;
+  padding-block: var(--space-2);
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.field-input::placeholder,
+.field-textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Trade Type Fieldset (Material Filter Chips) */
+.trade-fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.trade-fieldset legend {
+  padding: 0;
+  margin-block-end: var(--space-1);
+  font-size: var(--type-title-sm-size);
+  line-height: var(--type-title-sm-line);
+  font-weight: 700;
+}
+
+.radio-pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.radio-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.radio-pill input {
+  position: absolute;
+  opacity: 0;
+  inline-size: 1px;
+  block-size: 1px;
+}
+
+.radio-pill label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 40px;
+  padding-inline: var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg);
+  font-size: var(--type-label-lg-size);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  box-shadow: var(--elevation-1);
+  transition:
+    background-color 150ms var(--md-motion-standard),
+    box-shadow 150ms var(--md-motion-standard);
+}
+
+.radio-pill label:hover {
+  background-color: var(--color-surface);
+  box-shadow: var(--elevation-2);
+}
+
+.radio-pill input:checked + label {
+  background-color: var(--color-dark-pill);
+  border-color: var(--color-dark-pill);
+  color: var(--color-text-inverse);
+}
+
+.radio-pill input:focus-visible + label {
+  outline: 3px solid #0b57d0;
+  outline-offset: 2px;
+}
+
+/* Price Input Row */
+.price-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.price-prefix {
+  position: absolute;
+  inset-inline-start: var(--space-2);
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  pointer-events: none;
+}
+
+.price-input {
+  padding-inline-start: var(--space-4);
+  padding-inline-end: var(--space-5);
+  font-weight: 700;
+}
+
+.price-suffix {
+  position: absolute;
+  inset-inline-end: var(--space-2);
+  color: var(--color-text-muted);
+  font-size: var(--type-body-md-size);
+  pointer-events: none;
+}
+
+.checkbox-row {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-block-start: var(--space-05);
+  min-block-size: 40px;
+}
+
+.checkbox-row input[type="checkbox"] {
+  inline-size: 20px;
+  block-size: 20px;
+  accent-color: var(--color-brand);
+  cursor: pointer;
+}
+
+.checkbox-row label {
+  font-size: var(--type-body-md-size);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+/* Two-column compact fields */
+.field-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+@media (max-width: 520px) {
+  .field-row-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.write-submit-bar {
+  position: sticky;
+  inset-block-end: 0;
+  z-index: 15;
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--color-bg);
+  border-block-start: 1px solid var(--color-border);
+  box-shadow: 0 -2px 8px rgb(0 0 0 / 0.08);
+}
+
+.write-submit-bar .btn-primary {
+  flex: 1;
+  min-block-size: var(--space-6);
+  font-size: var(--type-title-md-size);
+}
+
+/* Live Preview Dialog Body */
+.preview-card {
+  border-radius: var(--radius-lg);
+  overflow: clip;
+  background-color: var(--color-bg);
+  box-shadow: var(--elevation-2);
+}
+
+.preview-card-hero {
+  aspect-ratio: 4 / 3;
+  background-color: #202328;
+}
+
+.preview-card-hero img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}

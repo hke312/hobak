@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <rect width="600" height="600" fill="#f3f4f6"/>
+  <!-- Mechanical Keyboard -->
+  <rect x="90" y="205" width="420" height="190" rx="18" fill="#212529" stroke="#495057" stroke-width="4"/>
+  <g fill="#f8f9fa">
+    <rect x="115" y="230" width="32" height="32" rx="5"/>
+    <rect x="155" y="230" width="32" height="32" rx="5"/>
+    <rect x="195" y="230" width="32" height="32" rx="5"/>
+    <rect x="235" y="230" width="32" height="32" rx="5"/>
+    <rect x="275" y="230" width="32" height="32" rx="5"/>
+    <rect x="315" y="230" width="32" height="32" rx="5"/>
+    <rect x="355" y="230" width="32" height="32" rx="5"/>
+    <rect x="395" y="230" width="32" height="32" rx="5"/>
+    <rect x="435" y="230" width="50" height="32" rx="5" fill="#ff6f0f"/>
+    <rect x="115" y="275" width="46" height="32" rx="5"/>
+    <rect x="169" y="275" width="32" height="32" rx="5"/>
+    <rect x="209" y="275" width="32" height="32" rx="5"/>
+    <rect x="249" y="275" width="32" height="32" rx="5"/>
+    <rect x="289" y="275" width="32" height="32" rx="5"/>
+    <rect x="329" y="275" width="32" height="32" rx="5"/>
+    <rect x="369" y="275" width="32" height="32" rx="5"/>
+    <rect x="409" y="275" width="76" height="32" rx="5"/>
+    <rect x="115" y="320" width="60" height="32" rx="5"/>
+    <rect x="183" y="320" width="190" height="32" rx="5"/>
+    <rect x="381" y="320" width="104" height="32" rx="5"/>
+  </g>
+</svg>

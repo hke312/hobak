@@ -1,0 +1,161 @@
+:root {
+  /* Material Design Color Roles (Hobak Brand Theme) */
+  --color-brand: #ff6f0f;
+  --color-brand-hover: #e55f00;
+  --color-brand-soft: #fff1e6;
+  --color-brand-tint: #ffdcc2;
+
+  /* Surface Hierarchy (Light Canvas -> Elevated Containers) */
+  --color-canvas: #f2f4f7;
+  --color-bg: #ffffff;
+  --color-surface: #f8f9fa;
+  --color-surface-muted: #eef0f4;
+  --color-surface-hover: #e6e9ef;
+  --color-border: #e0e3e7;
+  --color-border-strong: #c4c7c5;
+  --color-input-border: #747775;
+
+  /* Text */
+  --color-text: #1f1f1f;
+  --color-text-secondary: #444746;
+  --color-text-muted: #6c7075;
+  --color-text-inverse: #ffffff;
+
+  /* Semantic Status */
+  --color-dark-pill: #1f1f1f;
+  --color-badge-available: #c2410c;
+  --color-badge-reserved: #3c4043;
+  --color-badge-share: #0b8043;
+  --color-badge-sold: #747775;
+  --color-error: #b3261e;
+  --color-error-bg: #fce8e6;
+  --color-success: #146c2e;
+
+  /* 8px Grid Spacing System */
+  --space-05: 4px;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --space-8: 64px;
+
+  /* Material Shape Tokens */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+
+  /* Material Design Multi-Layered Elevation Shadows */
+  --elevation-1:
+    0 1px 2px rgb(0 0 0 / 0.14),
+    0 1px 3px 1px rgb(0 0 0 / 0.08);
+  --elevation-2:
+    0 1px 2px rgb(0 0 0 / 0.16),
+    0 2px 6px 2px rgb(0 0 0 / 0.10);
+  --elevation-3:
+    0 1px 3px rgb(0 0 0 / 0.18),
+    0 4px 8px 3px rgb(0 0 0 / 0.12);
+  --elevation-4:
+    0 2px 3px rgb(0 0 0 / 0.18),
+    0 6px 10px 4px rgb(0 0 0 / 0.12);
+  --elevation-5:
+    0 4px 4px rgb(0 0 0 / 0.22),
+    0 8px 12px 6px rgb(0 0 0 / 0.14);
+
+  /* Material Design Typography Scale */
+  --font-sans: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', sans-serif;
+  --type-headline-md-size: 1.5rem;      /* 24px */
+  --type-headline-md-line: 2rem;        /* 32px */
+  --type-title-lg-size: 1.375rem;       /* 22px */
+  --type-title-lg-line: 1.75rem;        /* 28px */
+  --type-title-md-size: 1rem;           /* 16px */
+  --type-title-md-line: 1.5rem;         /* 24px */
+  --type-title-sm-size: 0.875rem;       /* 14px */
+  --type-title-sm-line: 1.25rem;        /* 20px */
+  --type-body-lg-size: 1rem;            /* 16px */
+  --type-body-lg-line: 1.5rem;          /* 24px */
+  --type-body-md-size: 0.875rem;        /* 14px */
+  --type-body-md-line: 1.25rem;         /* 20px */
+  --type-body-sm-size: 0.75rem;         /* 12px */
+  --type-body-sm-line: 1rem;            /* 16px */
+  --type-label-lg-size: 0.875rem;       /* 14px */
+  --type-label-lg-line: 1.25rem;        /* 20px */
+  --type-label-md-size: 0.75rem;        /* 12px */
+  --type-label-md-line: 1rem;           /* 16px */
+
+  /* Motion */
+  --md-motion-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Layout */
+  --container-list: 1120px;
+  --container-detail: 640px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-canvas);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--type-body-md-size);
+  line-height: var(--type-body-md-line);
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-inline-size: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Hides content visually while keeping it accessible to screen readers */
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+:focus-visible {
+  outline: 3px solid #0b57d0;
+  outline-offset: 2px;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+[hidden] {
+  display: none !important;
+}

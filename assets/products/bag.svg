@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <rect width="600" height="600" fill="#f2f3f6"/>
+  <rect x="155" y="120" width="290" height="360" rx="24" fill="#e4b6d8" stroke="#c88ab8" stroke-width="4"/>
+  <path d="M225 130 C225 55, 375 55, 375 130" fill="none" stroke="#b978a8" stroke-width="18" stroke-linecap="round"/>
+  <polygon points="300,220 345,270 300,320 255,270" fill="#f7e3f2" stroke="#b978a8" stroke-width="4"/>
+  <text x="300" y="276" text-anchor="middle" fill="#7c3e6c" font-family="sans-serif" font-size="16" font-weight="700">TOTE</text>
+</svg>

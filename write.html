@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>내 물건 팔기 | 호박마켓</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/write.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="js/supabase-config.js"></script>
+  <script defer src="js/store.js"></script>
+  <script defer src="js/validation.js"></script>
+  <script defer src="js/auth.js"></script>
+  <script defer src="js/write.js"></script>
+</head>
+<body class="write-page-bg">
+  <main class="write-shell">
+    <header class="write-topbar">
+      <a href="index.html" id="write-close-link" class="write-close-btn" aria-label="목록으로 돌아가기">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18" />
+          <path d="m6 6 12 12" />
+        </svg>
+      </a>
+      <h1 id="write-page-title" class="write-topbar-title">내 물건 팔기</h1>
+      <div class="write-topbar-actions">
+        <button type="button" id="save-draft-btn" class="write-draft-btn">임시저장</button>
+        <button type="button" id="preview-btn" class="write-preview-pill">미리보기</button>
+      </div>
+    </header>
+
+    <section class="write-seller-strip" aria-label="판매자 정보 미리보기">
+      <div class="write-seller-left">
+        <div class="write-seller-avatar" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5Zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5Z" />
+          </svg>
+        </div>
+        <div class="write-seller-meta">
+          <span id="preview-seller-name" class="write-seller-name">헤엄치는오리</span>
+          <span id="preview-seller-region" class="write-seller-region">화정동, 대송동</span>
+        </div>
+      </div>
+      <span class="write-seller-temp" aria-label="매너온도 37.2도">37.2°C <span aria-hidden="true">😊</span></span>
+    </section>
+
+    <form id="write-form" class="write-form" novalidate>
+      <section class="photo-uploader" aria-label="상품 사진 등록">
+        <div class="photo-uploader-header">
+          <span class="photo-uploader-label">상품 사진 (<span id="photo-count">0</span>/10)</span>
+          <button type="button" id="sample-photo-btn" class="sample-photo-btn">샘플 사진 채우기</button>
+        </div>
+        <div class="photo-strip">
+          <label for="photo-input" class="photo-add-box">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
+              <circle cx="12" cy="13" r="3" />
+            </svg>
+            <span>사진 추가</span>
+          </label>
+          <input type="file" id="photo-input" accept="image/*" multiple class="visually-hidden">
+          <div id="photo-preview-list" class="photo-preview-list" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <div class="field">
+        <label for="post-title" class="field-label">제목</label>
+        <input
+          type="text"
+          id="post-title"
+          name="title"
+          class="field-input"
+          required
+          maxlength="60"
+          data-error="title-error"
+          enterkeyhint="next"
+          placeholder="예: 그루퍼너 SJ mz-24 RC 조종기"
+        >
+        <div id="title-error" class="error-msg">
+          <span role="img" aria-label="오류">❌</span> 상품 제목을 1글자 이상 입력해주세요.
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="post-category" class="field-label">카테고리</label>
+        <select
+          id="post-category"
+          name="category"
+          class="field-select"
+          required
+          data-error="category-error"
+        >
+          <option value="">카테고리를 선택해주세요</option>
+        </select>
+        <div id="category-error" class="error-msg">
+          <span role="img" aria-label="오류">❌</span> 카테고리를 선택해주세요.
+        </div>
+      </div>
+
+      <fieldset class="trade-fieldset">
+        <legend>거래 방식</legend>
+        <div class="radio-pill-group">
+          <div class="radio-pill">
+            <input type="radio" id="trade-sell" name="tradeType" value="sell" checked>
+            <label for="trade-sell">판매하기</label>
+          </div>
+          <div class="radio-pill">
+            <input type="radio" id="trade-share" name="tradeType" value="share">
+            <label for="trade-share">나눔하기</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label for="post-price" class="field-label">가격</label>
+        <div class="price-input-wrap">
+          <span class="price-prefix" aria-hidden="true">₩</span>
+          <input
+            type="text"
+            id="post-price"
+            name="price"
+            class="field-input price-input tabular-nums"
+            inputmode="numeric"
+            required
+            data-error="price-error"
+            enterkeyhint="next"
+            placeholder="가격을 입력해주세요"
+          >
+          <span class="price-suffix" aria-hidden="true">원</span>
+        </div>
+        <div class="checkbox-row">
+          <input type="checkbox" id="post-negotiable" name="negotiable">
+          <label for="post-negotiable">가격 제안 받기</label>
+        </div>
+        <div id="price-error" class="error-msg">
+          <span role="img" aria-label="오류">❌</span> 판매 가격을 숫자로 입력해주세요.
+        </div>
+      </div>
+
+      <div class="field-row-2">
+        <div class="field">
+          <label for="post-condition" class="field-label">상품 상태</label>
+          <select id="post-condition" name="condition" class="field-select">
+            <option value="중고">중고</option>
+            <option value="거의 새것">거의 새것</option>
+            <option value="새상품">새상품</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="post-location" class="field-label">거래 희망 동네</label>
+          <input
+            type="text"
+            id="post-location"
+            name="location"
+            class="field-input"
+            required
+            value="화정동, 대송동"
+            data-error="location-error"
+            enterkeyhint="next"
+            placeholder="예: 화정동, 대송동"
+          >
+          <div id="location-error" class="error-msg">
+            <span role="img" aria-label="오류">❌</span> 거래 희망 동네를 입력해주세요.
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="post-seller-name" class="field-label">판매자 닉네임</label>
+        <input
+          type="text"
+          id="post-seller-name"
+          name="sellerName"
+          class="field-input"
+          required
+          maxlength="20"
+          value="헤엄치는오리"
+          data-error="seller-error"
+          enterkeyhint="next"
+          placeholder="닉네임을 입력해주세요"
+        >
+        <div id="seller-error" class="error-msg">
+          <span role="img" aria-label="오류">❌</span> 판매자 닉네임을 입력해주세요.
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="post-description" class="field-label">자세한 설명</label>
+        <textarea
+          id="post-description"
+          name="description"
+          class="field-textarea"
+          required
+          minlength="10"
+          data-error="desc-error"
+          placeholder="화정동, 대송동에 올릴 게시글 내용을 작성해주세요.&#10;(판매 금지 물품은 게시가 제한될 수 있어요.)&#10;&#10;신뢰할 수 있는 거래를 위해 구매 시기, 사용감, 직거래 가능 장소 등을 자세히 적어주세요."
+        ></textarea>
+        <div id="desc-error" class="error-msg">
+          <span role="img" aria-label="오류">❌</span> 자세한 설명을 10자 이상 입력해주세요.
+        </div>
+      </div>
+    </form>
+
+    <div class="write-submit-bar">
+      <a href="index.html" id="write-cancel-link" class="btn btn-outline">취소</a>
+      <button type="submit" form="write-form" id="submit-post-btn" class="btn btn-primary">작성 완료</button>
+    </div>
+  </main>
+
+  <dialog id="preview-dialog" class="hobak-dialog hobak-dialog--wide" closedby="any" aria-labelledby="preview-dialog-title">
+    <div class="dialog-header">
+      <h2 id="preview-dialog-title" class="dialog-title">상세 페이지 미리보기</h2>
+      <button type="button" id="preview-close-btn" class="dialog-close" aria-label="미리보기 닫기">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18" />
+          <path d="m6 6 12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="dialog-body" id="preview-dialog-body"></div>
+    <div class="dialog-footer">
+      <button type="button" id="preview-dismiss-btn" class="btn btn-secondary">계속 수정하기</button>
+      <button type="submit" form="write-form" id="preview-submit-btn" class="btn btn-primary">작성 완료</button>
+    </div>
+  </dialog>
+
+  <div id="toast-banner" class="toast-banner" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <rect width="600" height="600" fill="#edf2f7"/>
+  <!-- Bicycle -->
+  <circle cx="175" cy="390" r="88" fill="none" stroke="#2d3748" stroke-width="14"/>
+  <circle cx="425" cy="390" r="88" fill="none" stroke="#2d3748" stroke-width="14"/>
+  <circle cx="175" cy="390" r="14" fill="#ff6f0f"/>
+  <circle cx="425" cy="390" r="14" fill="#ff6f0f"/>
+  <path d="M175 390 L285 265 L395 265 L425 390 M285 265 L265 390 L175 390 M265 390 L380 265" fill="none" stroke="#ff6f0f" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M260 225 H310" stroke="#1a202c" stroke-width="14" stroke-linecap="round"/>
+  <path d="M385 235 L425 225" stroke="#1a202c" stroke-width="12" stroke-linecap="round"/>
+  <line x1="285" y1="265" x2="285" y2="230" stroke="#4a5568" stroke-width="10"/>
+</svg>
